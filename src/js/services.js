@@ -6,7 +6,9 @@ app.service("mealService", function () {
             };
 
   return {
-
+    getCurrentMealID: function(){
+      return meals.count;
+    },
    
     getMealTotal: function(meal){
         var calculatedMeal={};
@@ -42,7 +44,7 @@ app.service("mealService", function () {
     getCurrentMeal: function(){
       var currentMealIndex=meals.list.length-1;
       if(meals.list.length===0){
-        return "No Meals have been addeds   !"
+        return "No Meals have been added!"
       }else{
         return meals.list[currentMealIndex];
       }

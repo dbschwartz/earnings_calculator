@@ -1,13 +1,6 @@
 
 app.controller('detailsCtrl', ['$scope', 'mealService',   function($scope, mealService) {
-  $scope.meals = mealService.getMealList();
-  
-
-  if($scope.meals.list.length === 0){
-    $scope.currentMeal = 1;
-  } else {
-    $scope.currentMeal = $scope.meals.length-1;
-  }
+  $scope.currentMeal = mealService.getCurrentMealID() +1;
 
   console.log($scope.currentMeal);
 
@@ -15,7 +8,8 @@ app.controller('detailsCtrl', ['$scope', 'mealService',   function($scope, mealS
 
       var calculatedMeal = mealService.getMealTotal(meal);
        mealService.addMeal(calculatedMeal);
-       $scope.currentMeal+=1;
+       $scope.currentMeal = mealService.getCurrentMealID() +1;
+
        this.meal = {};
     };
   
