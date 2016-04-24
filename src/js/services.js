@@ -10,8 +10,11 @@ app.service("mealService", function () {
    
     getMealTotal: function(meal){
         var calculatedMeal={};
+        calculatedMeal.price = meal.price;
+        calculatedMeal.taxRate = meal.taxrate;
         calculatedMeal.tax = meal.taxrate/100 * meal.price;
         calculatedMeal.subTotal = calculatedMeal.tax + meal.price;
+        calculatedMeal.tipRate =meal.tiprate;
         calculatedMeal.tip = meal.price * meal.tiprate/100;
         calculatedMeal.total = calculatedMeal.subTotal + calculatedMeal.tip;
         return calculatedMeal
