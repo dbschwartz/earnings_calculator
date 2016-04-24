@@ -3,7 +3,7 @@ app.controller('detailsCtrl', ['$scope', 'mealService',   function($scope, mealS
   $scope.meals = mealService.getMealList();
   
 
-  if($scope.meals.length === 0){
+  if($scope.meals.list.length === 0){
     $scope.currentMeal = 1;
   } else {
     $scope.currentMeal = $scope.meals.length-1;
@@ -23,8 +23,8 @@ app.controller('detailsCtrl', ['$scope', 'mealService',   function($scope, mealS
 
 
 
-app.controller('changeCtrl', ['$scope', function($scope) {
-  
+app.controller('chargesCtrl', ['$scope', 'mealService', function($scope, mealService) {
+  $scope.currentMeal = mealService.getCurrentMeal();  
 
 }]);
 

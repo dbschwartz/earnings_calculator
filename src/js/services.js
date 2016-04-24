@@ -1,35 +1,52 @@
 app.service("mealService", function () {
-  var meals= [];
+  var meals= {list: [],
+              count: 0,
+              tipTotal: 0,
+              total: 0
+            };
 
   return {
 
-    getMealList: function() {
-      return meals
-
-    },
+   
     getMealTotal: function(meal){
         var calculatedMeal={};
-        calculatedMeal.tax = meal.taxrate * meal.price;
+        calculatedMeal.tax = meal.taxrate/100 * meal.price;
         calculatedMeal.subTotal = calculatedMeal.tax + meal.price;
-        calculatedMeal.tip = meal.price * meal.tiprate;
+        calculatedMeal.tip = meal.price * meal.tiprate/100;
         calculatedMeal.total = calculatedMeal.subTotal + calculatedMeal.tip;
         return calculatedMeal
 
     },
 
     addMeal: function (calculatedMeal) {
-        if(meals.length === 0){
-          calculatedMeal.id === 1;
+
+        if(meals.count === 0){
+          calculatedMeal.id = 1;
         } else{
-          calculatedMeal.id === meals.length - 1;
+          calculatedMeal.id = meals.count + 1;
         }
 
+      meals.list.push(calculatedMeal);
+      meals.count+=1;
+      meals.tipTotal += calculatedMeal.tip;
+      meals.total += calculatedMeal.total;
+      meals.averageTipPerMeal = meals.tipTotal/meals.count;
 
-      meals.push(calculatedMeal);
       console.log(meals);
       return meals
-    }
-  };
+    },
 
-  }
-);
+    getCurrentMeal: function(){
+      var currentMealIndex=meals.list.length-1;
+      if(meals.list.length===0){
+        return "No Meals have been addeds   !"
+      }else{
+        return meals.list[currentMealIndex];
+      }
+    },
+
+     getMealList: function() {
+      return meals;
+     }
+  }; 
+});
