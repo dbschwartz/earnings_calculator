@@ -1,14 +1,15 @@
-// add comment
+// Initialzation of route configuration object
 angular.module('myApp')
   .config(routeConfig);
 
 
 // ** routeConfig ** //
 
-// add comment
+// dependency of the route provider service
 routeConfig.$inject = ['$routeProvider'];
 
-// add comment
+// declaration of route config function that uses routeProvider service
+// to define routes
 function routeConfig($routeProvider) {
   $routeProvider
     .when('/details', {
