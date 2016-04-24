@@ -2,7 +2,8 @@ app.service("mealService", function () {
   var meals= {list: [],
               count: 0,
               tipTotal: 0,
-              total: 0
+              total: 0,
+              averageTipPerMeal: 0
             };
 
   return {

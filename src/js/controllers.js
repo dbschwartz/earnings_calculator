@@ -22,7 +22,8 @@ app.controller('chargesCtrl', ['$scope', 'mealService', function($scope, mealSer
 
 }]);
 
-app.controller('earningsCtrl', ['$scope', function($scope) {
+app.controller('earningsCtrl', ['$scope', 'mealService', function($scope, mealService) {
+  $scope.mealList = mealService.getMealList();
 
 
 }]);
