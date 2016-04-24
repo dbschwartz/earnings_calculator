@@ -1,33 +1,52 @@
+// add comment
+angular.module('myApp')
+  .controller('detailsCtrl', detailsCtrl)
+  .controller('chargesCtrl', chargesCtrl)
+  .controller('earningsCtrl', earningsCtrl);
 
-app.controller('detailsCtrl', ['$scope', 'mealService',   function($scope, mealService) {
+
+// ** detailsCtrl ** //
+
+// add comment
+detailsCtrl.$inject = ['$scope', 'mealService'];
+
+// add comment
+function detailsCtrl($scope, mealService) {
+  // add comment
   $scope.currentMeal = mealService.getCurrentMealID() +1;
-
-  console.log($scope.currentMeal);
-
-    $scope.getMeal = function(meal){
-
-      var calculatedMeal = mealService.getMealTotal(meal);
-       mealService.addMeal(calculatedMeal);
-       $scope.currentMeal = mealService.getCurrentMealID() +1;
-
-       this.meal = {};
-    };
-  
-}]);
+  // add comment
+  $scope.getMeal = function(meal){
+    var calculatedMeal = mealService.getMealTotal(meal);
+    mealService.addMeal(calculatedMeal);
+    $scope.currentMeal = mealService.getCurrentMealID() +1;
+    this.meal = {};
+  };
+}
 
 
+// ** chargesCtrl ** //
 
-app.controller('chargesCtrl', ['$scope', 'mealService', function($scope, mealService) {
-  $scope.currentMeal = mealService.getCurrentMeal();  
+// add comment
+chargesCtrl.$inject = ['$scope', 'mealService'];
 
-}]);
+// add comment
+function chargesCtrl($scope, mealService) {
+  // add comment
+  $scope.currentMeal = mealService.getCurrentMeal();
+}
 
-app.controller('earningsCtrl', ['$scope', 'mealService', function($scope, mealService) {
+
+// ** earningsCtrl ** //
+
+chargesCtrl.$inject = ['$scope', 'mealService'];
+
+// add comment
+function earningsCtrl($scope, mealService) {
+  // add comment
   $scope.mealList = mealService.getMealList();
+  // add comment
   $scope.resetMeals = function(){
     mealService.resetMealList();
     $scope.mealList = mealService.getMealList();
-  }
-
-
-}]);
+  };
+}
