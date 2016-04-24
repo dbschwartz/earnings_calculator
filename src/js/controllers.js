@@ -24,10 +24,10 @@ app.controller('chargesCtrl', ['$scope', 'mealService', function($scope, mealSer
 
 app.controller('earningsCtrl', ['$scope', 'mealService', function($scope, mealService) {
   $scope.mealList = mealService.getMealList();
+  $scope.resetMeals = function(){
+    mealService.resetMealList();
+    $scope.mealList = mealService.getMealList();
+  }
 
-
-}]);
-
-app.controller('resetCtrl', ['$scope', function($scope) { 
 
 }]);

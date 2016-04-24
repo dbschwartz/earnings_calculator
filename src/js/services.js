@@ -53,6 +53,17 @@ app.service("mealService", function () {
 
      getMealList: function() {
       return meals;
+     },
+
+    resetMealList: function() {
+        meals= {list: [],
+              count: 0,
+              tipTotal: 0,
+              total: 0,
+              averageTipPerMeal: 0
+            };
+        console.log(meals);
+        return meals;
      }
   }; 
 });
